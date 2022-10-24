@@ -9,13 +9,13 @@
 
     private void Entry_TextChanged(object sender, TextChangedEventArgs e)
     {
-      if (!Converters.Binary.IsValid(e.NewTextValue))
-      {
-        BinaryEntry.Text = e.OldTextValue;
-        return;
-      }
+      DecimalEntry.Text = Converters.Binary.IsValid(e.NewTextValue) ?
+        Converters.Binary.StringToInt(BinaryEntry.Text).ToString() : String.Empty;
+    }
 
-      DecimalEntry.Text = Converters.Binary.StringToInt(BinaryEntry.Text).ToString();
+    private void VerticalStackLayout_Loaded(object sender, EventArgs e)
+    {
+      BinaryEntry.Focus();
     }
   }
 }

@@ -1,30 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Bin2Dec.MAUI.MainPage">
+             x:Class="Bin2Dec.MAUI.MainPage"
+             xmlns:local="clr-namespace:Bin2Dec.MAUI">
 
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
-            VerticalOptions="Center">
+            VerticalOptions="Center" 
+            Loaded="VerticalStackLayout_Loaded">
 
             <Label
-                Text="Bin2Dec"
+                Text="Binary to Decimal Converter"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <Label
-                Text="Binary to Decimal Converter"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+            <Entry 
+                x:Name="BinaryEntry"
+                TextChanged="Entry_TextChanged"
+                Placeholder="Type a binary number"
+                MaxLength="32"
+                HorizontalOptions="CenterAndExpand"
+                local:AttachedBinaryValidationBehavior.AttachBehavior="True" />
 
-            <Entry x:Name="BinaryEntry" TextChanged="Entry_TextChanged" Placeholder="Type a binary number"/>
-
-            <Entry x:Name="DecimalEntry" IsReadOnly="True" Placeholder="Decimal number" />
+            <Entry
+                x:Name="DecimalEntry"
+                IsReadOnly="True"
+                Placeholder="Decimal number"
+                HorizontalOptions="CenterAndExpand"/>
 
         </VerticalStackLayout>
     </ScrollView>
